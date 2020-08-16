@@ -1,5 +1,5 @@
 <header>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light" style="box-shadow: 1px 1px grey;">
         <a class="navbar-brand" href="#">MyTaskNow</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -18,7 +18,21 @@
                     <a class="nav-link" href="#">Pricing</a>
                 </li>
             </ul>
-            <a routerLink='/login'><button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Login</button></a>
+            <div class="" id="navbar-list-4" *ngIf='this.taskBasicAuthService.isLoggedIn'>
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      <img src="https://s3.eu-central-1.amazonaws.com/bootstrapbaymisc/blog/24_days_bootstrap/fox.jpg" width="40" height="40" class="rounded-circle">
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                      <a class="dropdown-item" routerLink='dashboard'><i class="fas fa-chart-line"></i> Dashboard</a>
+                      <a class="dropdown-item" routerLink='profile'><i class="far fa-user-circle"></i> My Profile</a>
+                      <a class="dropdown-item text-danger" href="" (click)='this.taskBasicAuthService.logout()' *ngIf='this.taskBasicAuthService.isLoggedIn'><i class="fas fa-sign-out-alt"></i> Logout</a>
+                    </div>
+                  </li>   
+                </ul>
+              </div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <a routerLink='/login'><button class="btn btn-outline-primary my-2 my-sm-0" *ngIf='!this.taskBasicAuthService.isLoggedIn'>Login</button></a>
         </div>
     </nav>
 </header>

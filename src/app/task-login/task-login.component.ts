@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TaskBasicAuthService } from '../services/loginService/task-basic-auth.service';
+import { Router } from '@angular/router';
+import { TaskRouteGuardService } from '../services/guard/task-route-guard.service';
 
 @Component({
   selector: 'app-task-login',
@@ -8,21 +10,43 @@ import { TaskBasicAuthService } from '../services/loginService/task-basic-auth.s
 })
 export class TaskLoginComponent implements OnInit {
 
-  invalidUser: boolean;
-  username: string = 'admin@xyz.com';
+  username: string;
   password: string;
-
-  constructor(private taskBasicAuthService: TaskBasicAuthService) { }
+  errorMessage: string;
+  invalidCred: boolean;
+  constructor(public taskBasicAuthService: TaskBasicAuthService,private router: Router) { }
 
   ngOnInit(): void {
   }
 
-  basicAuthLoginHandler() {
-    if(this.taskBasicAuthService.basicAuthService(this.username, this.password)){
+  async firebaseLoginHandler() {
+  //  Promise.all([this.taskBasicAuthService.login(this.username, this.password)]).then(
+  //   (values) => {
+  //      this.invalidCred = false;
+  //     this.router.navigate(['dashboard']);
+  //   }
+  //  ).catch((error) => {
+  //   // alert(error.message);
+  //   this.invalidCred = true;
+  //  })
+  await this.taskBasicAuthService.login(this.username, this.password).catch(
+    (error) => {
+      this.invalidCred = true;
+      this.errorMessage = error;
+  });
+  
+  }
 
-    } else {
+  async firebaseRegHandler() {
+    await this.taskBasicAuthService.register(this.username, this.password).catch(
+      (error) => {
+        this.invalidCred = true;
+        this.errorMessage = error;
+    });
+  }
 
-    }
+  onFocusOfInput() {
+    this.invalidCred = false;
   }
 
 }

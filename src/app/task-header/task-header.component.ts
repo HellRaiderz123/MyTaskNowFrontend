@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { TaskBasicAuthService } from '../services/loginService/task-basic-auth.service';
 
 @Component({
   selector: 'app-task-header',
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TaskHeaderComponent implements OnInit {
 
-  constructor() { }
+  constructor(public taskBasicAuthService: TaskBasicAuthService) { }
 
   ngOnInit(): void {
   }

@@ -6,15 +6,25 @@
                 <h2 class="text-info font-weight-light mb-5">MyTaskNow</h2>
                 <form>
                     <div class="form-group">
-                        <label class="text-secondary">Username or email address</label><input [(ngModel)]='username' class="form-control" name='email' type="text" required
-                            pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,15}$" inputmode="email" /></div>
-                    <div class="form-group"><label class="text-secondary">Password</label><input [(ngModel)]='password' class="form-control" name='password'
-                            type="password" required /></div>
-                    <button class="btn btn-info mt-2" type="submit" (click)='basicAuthLoginHandler()'>Log In</button>&nbsp;
-                    <button class="btn btn-success mt-2">Sign Up</button>
+                        <label class="text-secondary">Username or email address</label><input [(ngModel)]='username'
+                            class="form-control" name='email' type="text" required
+                            pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,15}$" inputmode="email" (focus)='onFocusOfInput()'/></div>
+                    <div class="form-group"><label class="text-secondary">Password</label><input [(ngModel)]='password'
+                            class="form-control" name='password' type="password" required (focus)='onFocusOfInput()'/></div>
+                    <p class="alert alert-danger" *ngIf='invalidCred'>{{errorMessage}}</p>
+                    <button class="btn btn-info mt-2" type="submit" (click)='firebaseLoginHandler()'>Log
+                        In</button>&nbsp;
+                    <button class="btn btn-success mt-2" (click)='firebaseRegHandler()'>Sign Up</button>
                 </form>
-                <p class="mt-3 mb-0"><a class="text-info small" href="#">Forgot your email or password?</a></p>
+                <p class="mt-3 mb-0"><a class="text-info small" href="#"
+                        (click)='this.taskBasicAuthService.sendPasswordResetEmail(username)'>Forgot your email or
+                        password?</a></p><hr>
+                        <button class="btn btn-outline-dark" (click)='this.taskBasicAuthService.loginWithGoogle()'><i class="fab fa-google"></i></button>&nbsp;&nbsp;
+                        <button class="btn btn-outline-dark" (click)='this.taskBasicAuthService.loginWithGoogle()'><i class="fab fa-facebook"></i></button>&nbsp;&nbsp;
+                        <button class="btn btn-outline-dark" (click)='this.taskBasicAuthService.loginWithGoogle()'><i class="fab fa-twitter"></i></button>&nbsp;&nbsp;
+                        <button class="btn btn-outline-dark" (click)='this.taskBasicAuthService.loginWithGoogle()'><i class="fab fa-github"></i></button>
             </div>
         </div>
     </div>
 </div>
+<br><br><br><br><br><br><br><br><br><br><br>

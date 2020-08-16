@@ -1,0 +1,29 @@
+<br>
+<div class="container" style="left: 0px; right: 0px; margin: auto;" >
+    <form (ngSubmit)='!todoForm.invalid  && saveUserDet()' #todoForm = "ngForm">
+        <div class=" form-group row">
+            <div class="col-sm-12">
+                <label for="username">Full Name</label><input name="username" type="text" [(ngModel)] = 'userFullName' id="username" class="form-control" required="required">
+            </div>
+        </div>
+        <br>
+        <div class=" form-group row">
+            <div class="col-sm-12">
+                <label for="userDet">User Details</label><input name='userDet' type="text"  [(ngModel)] = 'userDet' id="userDet" class="form-control" required="required">
+            </div>
+        </div>
+        <br>
+        <label for="userDet">Profile Picture</label>
+        <div class="input-group mb-3">
+            
+            <div class="custom-file">
+              <input type="file" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01">
+              <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+            </div>
+          </div>
+        <br>
+        <button class="btn btn-primary" type="submit">Save</button>
+    </form>
+    <br>
+<div class="alert alert-warning" *ngIf="todoForm.invalid">Please enter valid values</div><br>
+</div>

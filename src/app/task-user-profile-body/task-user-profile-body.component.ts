@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserDet } from '../services/loginService/user.model';
+import { TaskUsersService } from '../services/userService/task-users.service';
 
 @Component({
   selector: 'app-task-user-profile-body',
@@ -12,10 +13,10 @@ export class TaskUserProfileBodyComponent implements OnInit {
   userDet: string;
   userFullName: string;
 
-  constructor() { 
+  constructor( private taskUsersService: TaskUsersService) { 
     this.user = new UserDet;
     this.user.setUserId(JSON.parse(localStorage.getItem('user')).uid);
-    this.user.setUserId(JSON.parse(localStorage.getItem('user')).email);
+    this.user.setUserEmail(JSON.parse(localStorage.getItem('user')).email);
   }
 
   ngOnInit(): void {
@@ -25,7 +26,8 @@ export class TaskUserProfileBodyComponent implements OnInit {
   saveUserDet() {
     this.user.setUserDetails(this.userDet);
     this.user.setUserName(this.userFullName);
-    console.log(this.user);
+    // console.log(this.user);
+    this.taskUsersService.postUserDataOnPersonDataProfileEdit(this.user).subscribe();
   }
 
 }

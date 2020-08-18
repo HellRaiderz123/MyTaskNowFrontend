@@ -15,6 +15,7 @@ import { TaskDashboardComponent } from './task-dashboard/task-dashboard.componen
 import { TaskUserProfileComponent } from './task-user-profile/task-user-profile.component';
 import { TaskUserProfileBodyComponent } from './task-user-profile-body/task-user-profile-body.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { TaskSiderBarComponent } from './task-sider-bar/task-sider-bar.component';
 
 export const firebaseConfig = {
   apiKey: "AIzaSyBV8gdT47Bqa-7e4tVejOcJLVal1wtsYF0",
@@ -36,7 +37,8 @@ export const firebaseConfig = {
     TaskLoginComponent,
     TaskDashboardComponent,
     TaskUserProfileComponent,
-    TaskUserProfileBodyComponent
+    TaskUserProfileBodyComponent,
+    TaskSiderBarComponent
   ],
   imports: [
     BrowserModule,

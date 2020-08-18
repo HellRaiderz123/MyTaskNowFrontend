@@ -10,10 +10,14 @@ import { TaskRouteGuardService } from '../services/guard/task-route-guard.servic
 })
 export class TaskLoginComponent implements OnInit {
 
+  fullName: string = null;
   username: string;
   password: string;
   errorMessage: string;
   invalidCred: boolean;
+  isLoginAttempted: boolean = false;
+  firstTimeSungUpAttempt: boolean = false;
+
   constructor(public taskBasicAuthService: TaskBasicAuthService,private router: Router) { }
 
   ngOnInit(): void {
@@ -33,12 +37,18 @@ export class TaskLoginComponent implements OnInit {
     (error) => {
       this.invalidCred = true;
       this.errorMessage = error;
+      this.isLoginAttempted = true;
   });
   
   }
 
   async firebaseRegHandler() {
-    await this.taskBasicAuthService.register(this.username, this.password).catch(
+    if(this.fullName==='' || this.fullName===null) {
+      this.invalidCred = true;
+      this.errorMessage = 'Please Enter the Full Name to SignUp!';
+      return false;
+    }
+    await this.taskBasicAuthService.register(this.username, this.password, this.fullName).catch(
       (error) => {
         this.invalidCred = true;
         this.errorMessage = error;
@@ -47,6 +57,10 @@ export class TaskLoginComponent implements OnInit {
 
   onFocusOfInput() {
     this.invalidCred = false;
+  }
+
+  firstTimeSugnUp() {
+    this.firstTimeSungUpAttempt = true;
   }
 
 }

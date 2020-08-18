@@ -1,18 +1,4 @@
 <div class="wrapper">
-    <nav id="sidebar">
-        <div class="sidebar-header">
-            <span class="text-center"><h3><img src="https://s3.eu-central-1.amazonaws.com/bootstrapbaymisc/blog/24_days_bootstrap/fox.jpg" width="70" height="70" class="rounded-circle"> Tarun K. Parashar</h3></span>
-            <h5>Hi!! This is testing and testing is what it is.</h5>
-        </div>
-        <ul class="list-unstyled components">
-            <li class="active"><a href="">Personal Details</a></li>
-            <li><a href="">Account Details</a></li>
-            <li><a href="">Billing Address</a></li>
-            <li><a href="">Payment methods</a></li>
-        </ul>
-    </nav>
-    <div id="content">
-    </div>
-    <!-- Body Content -->
+    <app-task-sider-bar  [sideBarList]='sideBarList' [userName] = 'userName'></app-task-sider-bar>
     <app-task-user-profile-body></app-task-user-profile-body>
 </div>

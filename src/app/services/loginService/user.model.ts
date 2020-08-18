@@ -26,4 +26,16 @@ export class UserDet {
         this.userIssues = userIssues;
     }
 
+    public getUserId(): string{
+        return this.userId;
+    }
+
+    public getUserName(): string{
+        return this.userName;
+    }
+
+    public getUserEmail(): string{
+        return this.userEmail;
+    }
+
 }

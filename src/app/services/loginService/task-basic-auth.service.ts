@@ -25,6 +25,12 @@ export class TaskBasicAuthService {
     public  router:  Router,
     private taskUsersService: TaskUsersService
     ) { 
+      if(!(localStorage.getItem('user')==null || localStorage.getItem('user')=='null')){
+        this.authUser = JSON.parse(localStorage.getItem('user'));
+        this.users.setUserEmail(this.authUser.email);
+        this.users.setUserName(this.authUser.uid);
+
+      }
     }
 
   basicAuthService(username:string, password: string): boolean {
@@ -41,6 +47,17 @@ export class TaskBasicAuthService {
       if (user){
         // this.user = user;
         localStorage.setItem('user', JSON.stringify(user));
+        //Need to get User Det with User iD and set to localStorage
+        console.log(JSON.parse(JSON.stringify(user)).uid)
+        this.taskUsersService.getUserDataByID(JSON.parse(JSON.stringify(user)).uid).subscribe(
+          data => {
+              this.users = data;
+              localStorage.setItem('userDet',JSON.stringify(data));
+          },
+          error=> {
+            console.log(error);
+          }
+        );
         this.router.navigate(['dashboard']);
       } else {
         localStorage.setItem('user', null);
@@ -48,7 +65,7 @@ export class TaskBasicAuthService {
     })
   }
 
-  async register(email: string, password: string) {
+  async register(email: string, password: string, fullName: string) {
      var result = await this.afAuth.auth.createUserWithEmailAndPassword(email, password);
      this.sendEmailVerification();
      this.afAuth.authState.subscribe(user => {
@@ -59,6 +76,7 @@ export class TaskBasicAuthService {
         this.authUser = JSON.parse(JSON.stringify(user));
         this.users.setUserId(this.authUser.uid);
         this.users.setUserEmail(this.authUser.email);
+        this.users.setUserName(fullName);
         //calling end point
         this.taskUsersService.postUserDataOnReg(this.users).subscribe();
       } else {
@@ -80,6 +98,7 @@ async sendPasswordResetEmail(passwordResetEmail: string) {
 async logout(){
   await this.afAuth.auth.signOut();
   localStorage.removeItem('user');
+  localStorage.removeItem('userDet');
 }
 
 get isLoggedIn(): boolean{
@@ -91,6 +110,10 @@ get isLoggedIn(): boolean{
 async  loginWithGoogle(){
   await  this.afAuth.auth.signInWithPopup(new auth.GoogleAuthProvider())
   this.router.navigate(['admin/list']);
+}
+
+getUserDetails() : UserDet {
+  return this.users;
 }
 
 }

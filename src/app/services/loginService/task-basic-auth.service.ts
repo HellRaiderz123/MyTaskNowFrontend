@@ -25,11 +25,22 @@ export class TaskBasicAuthService {
     public  router:  Router,
     private taskUsersService: TaskUsersService
     ) { 
-      if(!(localStorage.getItem('user')==null || localStorage.getItem('user')=='null')){
-        this.authUser = JSON.parse(localStorage.getItem('user'));
-        this.users.setUserEmail(this.authUser.email);
-        this.users.setUserName(this.authUser.uid);
-
+      //Need to update user class if its already logged
+      if(this.isLoggedIn){
+          if(localStorage.getItem('userDet')!=null && localStorage.getItem('userDet')!='null'){
+            this.users = JSON.parse(localStorage.getItem('userDet'));
+          } else {
+            this.taskUsersService.getUserDataByID(JSON.parse(JSON.stringify(localStorage.getItem('user'))).uid).subscribe(
+              data => {
+                  this.users = data;
+                  localStorage.setItem('userDet',JSON.stringify(data));
+              },
+              error=> {
+                console.log(error);
+                this.router.navigate(['error']);
+              });
+              
+          }
       }
     }
 
@@ -52,13 +63,14 @@ export class TaskBasicAuthService {
         this.taskUsersService.getUserDataByID(JSON.parse(JSON.stringify(user)).uid).subscribe(
           data => {
               this.users = data;
+              this.router.navigate(['dashboard']);
               localStorage.setItem('userDet',JSON.stringify(data));
           },
           error=> {
             console.log(error);
+            this.router.navigate(['error']);
           }
         );
-        this.router.navigate(['dashboard']);
       } else {
         localStorage.setItem('user', null);
       }
@@ -102,7 +114,7 @@ async logout(){
 }
 
 get isLoggedIn(): boolean{
-  const  user  =  JSON.parse(localStorage.getItem('user'));
+  const  user  =  JSON.parse(localStorage.getItem('userDet'));
   // console.log('here in isLOggedIN and return ' +  (user  !==  null));
   return  user  !==  null;
 }

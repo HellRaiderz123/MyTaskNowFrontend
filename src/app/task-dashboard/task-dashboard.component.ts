@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserDet } from '../services/loginService/user.model';
+import { TaskBasicAuthService } from '../services/loginService/task-basic-auth.service';
 
 @Component({
   selector: 'app-task-dashboard',
@@ -9,35 +10,19 @@ import { UserDet } from '../services/loginService/user.model';
 export class TaskDashboardComponent implements OnInit {
 
 
-  user = new UserDet;
-
+  user: UserDet;
   userName: string;
 
-  userDetails: string;
-
-  authUser;
-
-  constructor() { 
-    this.authUser  =  JSON.parse(localStorage.getItem('user'));
-    console.log(this.authUser);
-    //this.user.email = localStorage.getItem('user');
+  constructor(private taskBasicAuthService : TaskBasicAuthService) { 
   }
 
   ngOnInit(): void {
+    this.user = this.taskBasicAuthService.getUserDetails();
+    console.log('in TaskDashProfileCompNgOnInit ' + this.user.userName);
+    this.userName = this.user.userName;
   }
 
-  addMyDetails() {
-
-    //
-    console.log(this.authUser.uid);
-    this.user.setUserId(this.authUser.uid);
-    this.user.setUserEmail(this.authUser.email);
-    this.user.setUserDetails('');
-    this.user.setUserName(this.userName);
-
-    
-
-  }
+  sideBarList: Array<String> = ['List View', 'Other View'];
   
 
 }

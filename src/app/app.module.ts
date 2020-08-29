@@ -16,6 +16,9 @@ import { TaskUserProfileComponent } from './task-user-profile/task-user-profile.
 import { TaskUserProfileBodyComponent } from './task-user-profile-body/task-user-profile-body.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TaskSiderBarComponent } from './task-sider-bar/task-sider-bar.component';
+import { TaskErrorComponent } from './task-error/task-error.component';
+import { TaskDashProjectsComponent } from './task-dash-projects/task-dash-projects.component';
+import { BackendErrorComponent } from './backend-error/backend-error.component';
 
 export const firebaseConfig = {
   apiKey: "AIzaSyBV8gdT47Bqa-7e4tVejOcJLVal1wtsYF0",
@@ -38,7 +41,10 @@ export const firebaseConfig = {
     TaskDashboardComponent,
     TaskUserProfileComponent,
     TaskUserProfileBodyComponent,
-    TaskSiderBarComponent
+    TaskSiderBarComponent,
+    TaskErrorComponent,
+    TaskDashProjectsComponent,
+    BackendErrorComponent
   ],
   imports: [
     BrowserModule,

@@ -7,6 +7,6 @@
         <h5>Hi!! This is testing and testing is what it is.</h5>
     </div>
     <ul class="list-unstyled components" >
-        <li *ngFor='let list of sideBarList'><a href="">{{list}}</a></li>
+        <li *ngFor='let list of sideBarList'><a [routerLink]="[{ outlets: { personaProfile: ['profile-personal']} }]">{{list}}</a></li>
     </ul>
 </nav>

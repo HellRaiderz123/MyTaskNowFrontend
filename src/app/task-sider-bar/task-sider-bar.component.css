@@ -43,9 +43,11 @@ p {
     min-width: 250px;
     max-width: 250px;
     min-height: 768px;
+    max-height: max-content;
     background: #7386D5;
     color: #fff;
     transition: all 0.3s;
+    height: 100%;
   }
   
   #sidebar.active {

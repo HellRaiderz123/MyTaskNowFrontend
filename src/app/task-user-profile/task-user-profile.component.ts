@@ -9,7 +9,7 @@ import { UserDet } from '../services/loginService/user.model';
 })
 export class TaskUserProfileComponent implements OnInit {
 
-  user = new UserDet;
+  user: UserDet;
   userName: string;
 
   constructor(

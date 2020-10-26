@@ -9,14 +9,16 @@ import { TaskUserProfileComponent } from './task-user-profile/task-user-profile.
 import { TaskUserProfileBodyComponent } from './task-user-profile-body/task-user-profile-body.component';
 import { TaskErrorComponent } from './task-error/task-error.component';
 import { BackendErrorComponent } from './backend-error/backend-error.component';
+import { TaskDashboardDetailProjectComponent } from './task-dashboard-detail-project/task-dashboard-detail-project.component';
 
 const routes: Routes = [
   {path: '', component: TaskHomeComponent },
   {path: 'login', component: TaskLoginComponent },
   {path: 'dashboard', component: TaskDashboardComponent , canActivate: [TaskRouteGuardService] },
   {path: 'profile', component: TaskUserProfileComponent, canActivate: [TaskRouteGuardService], children: [
-    {path: 'profile-personal', component: TaskUserProfileBodyComponent, canActivate: [TaskRouteGuardService], outlet: 'personaProfile'}
+    {path: 'personal details', component: TaskUserProfileBodyComponent, canActivate: [TaskRouteGuardService], outlet: 'personaProfile'}
   ] },
+  {path: 'dashboard/detail-project', component: TaskDashboardDetailProjectComponent, canActivate: [TaskRouteGuardService]},
   {path: 'error', component: BackendErrorComponent},
   {path: '**', component: TaskErrorComponent}
   

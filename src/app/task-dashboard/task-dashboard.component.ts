@@ -22,7 +22,7 @@ export class TaskDashboardComponent implements OnInit {
     this.userName = this.user.userName;
   }
 
-  sideBarList: Array<String> = ['List View', 'Other View'];
+  sideBarList: Array<String> = ['List View', 'Detail View'];
   
 
 }

@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-task-sider-bar',
@@ -9,13 +10,19 @@ export class TaskSiderBarComponent implements OnInit {
 
   @Input() sideBarList: Array<String>;
   @Input() userName: string;
+  @Input() sideBarType: string;
 
-  constructor() { 
+  constructor(private route: Router) { 
   }
 
   ngOnInit(): void {
-    console.log(this.sideBarList);
-    console.log(this.userName);
+  }
+
+  gotoRespectiveModule(value: string){
+    value = value.toLocaleLowerCase();
+    this.route.navigate(
+      [this.sideBarType, { outlets: { personaProfile: [value]} }]
+      );
   }
 
 }

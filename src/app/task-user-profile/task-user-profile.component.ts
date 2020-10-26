@@ -11,6 +11,7 @@ export class TaskUserProfileComponent implements OnInit {
 
   user: UserDet;
   userName: string;
+  sideBarType = 'profile';
 
   constructor(
     private taskBasicAuthService : TaskBasicAuthService

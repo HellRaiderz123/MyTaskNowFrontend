@@ -19,6 +19,7 @@ import { TaskSiderBarComponent } from './task-sider-bar/task-sider-bar.component
 import { TaskErrorComponent } from './task-error/task-error.component';
 import { TaskDashProjectsComponent } from './task-dash-projects/task-dash-projects.component';
 import { BackendErrorComponent } from './backend-error/backend-error.component';
+import { TaskDashboardDetailProjectComponent } from './task-dashboard-detail-project/task-dashboard-detail-project.component';
 
 export const firebaseConfig = {
   apiKey: "AIzaSyBV8gdT47Bqa-7e4tVejOcJLVal1wtsYF0",
@@ -44,7 +45,8 @@ export const firebaseConfig = {
     TaskSiderBarComponent,
     TaskErrorComponent,
     TaskDashProjectsComponent,
-    BackendErrorComponent
+    BackendErrorComponent,
+    TaskDashboardDetailProjectComponent
   ],
   imports: [
     BrowserModule,

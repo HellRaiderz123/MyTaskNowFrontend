@@ -5,12 +5,14 @@ export class Project {
         projectName: string, 
         projectStartDate: Date,
         projectEndDate: Date,
-        projectCollabrators: Array<string>) {
+        projectCollabrators: Array<string>,
+        projectFav: boolean) {
             this.projectCollabrators = projectCollabrators;
             this.projectEndDate = projectEndDate;
             this.projectStartDate = projectStartDate;
             this.projectId = projectId;
             this.projectName = projectName;
+            this.projectFav = projectFav;
         }
 
     projectId: string;
@@ -22,4 +24,6 @@ export class Project {
     projectEndDate: Date;
 
     projectCollabrators: Array<string>;
+
+    projectFav: boolean;
 }

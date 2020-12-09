@@ -17,6 +17,7 @@ export class TaskLoginComponent implements OnInit {
   invalidCred: boolean;
   isLoginAttempted: boolean = false;
   firstTimeSungUpAttempt: boolean = false;
+  spiner:boolean;
 
   constructor(public taskBasicAuthService: TaskBasicAuthService,private router: Router) { }
 
@@ -33,11 +34,14 @@ export class TaskLoginComponent implements OnInit {
   //   // alert(error.message);
   //   this.invalidCred = true;
   //  })
+
+  this.spiner = true;
   await this.taskBasicAuthService.login(this.username, this.password).catch(
     (error) => {
       this.invalidCred = true;
       this.errorMessage = error;
       this.isLoginAttempted = true;
+      this.spiner = false;
   });
   
   }

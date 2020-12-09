@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AngularFireModule } from 'angularfire2';
+import { NgCircleProgressModule } from 'ng-circle-progress';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -20,6 +21,8 @@ import { TaskErrorComponent } from './task-error/task-error.component';
 import { TaskDashProjectsComponent } from './task-dash-projects/task-dash-projects.component';
 import { BackendErrorComponent } from './backend-error/backend-error.component';
 import { TaskDashboardDetailProjectComponent } from './task-dashboard-detail-project/task-dashboard-detail-project.component';
+import { TaskFavComponent } from './task-reusable-component/task-fav/task-fav.component';
+import { TaskCircleProgressComponentComponent } from './task-reusable-component/task-circle-progress-component/task-circle-progress-component.component';
 
 export const firebaseConfig = {
   apiKey: "AIzaSyBV8gdT47Bqa-7e4tVejOcJLVal1wtsYF0",
@@ -46,7 +49,9 @@ export const firebaseConfig = {
     TaskErrorComponent,
     TaskDashProjectsComponent,
     BackendErrorComponent,
-    TaskDashboardDetailProjectComponent
+    TaskDashboardDetailProjectComponent,
+    TaskFavComponent,
+    TaskCircleProgressComponentComponent
   ],
   imports: [
     BrowserModule,
@@ -55,7 +60,22 @@ export const firebaseConfig = {
     HttpClientModule,
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFireAuthModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    NgCircleProgressModule.forRoot({
+      percent:100,
+      titleFontSize:"0" ,
+      showSubtitle:false ,
+      showUnits:false,
+      outerStrokeColor:"#707070" ,
+      innerStrokeColor:"#D4D4D4" ,
+      radius:20,
+      backgroundPadding:7,
+      outerStrokeWidth:5,
+      space:-5,
+      innerStrokeWidth:5,
+      animation:true,
+      animationDuration:1000
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]

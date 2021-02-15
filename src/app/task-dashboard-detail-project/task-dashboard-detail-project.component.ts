@@ -7,10 +7,6 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TaskDashboardDetailProjectComponent implements OnInit {
 
-  activeProjectPhase: string = 'A&D';
-  activeClass: string="btn btn-outline-primary rounded-circle";
-  notActiveClass: string="btn btn-outline-secondary rounded-circle";
-
   constructor() { }
 
   ngOnInit(): void {

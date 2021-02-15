@@ -23,6 +23,8 @@ import { BackendErrorComponent } from './backend-error/backend-error.component';
 import { TaskDashboardDetailProjectComponent } from './task-dashboard-detail-project/task-dashboard-detail-project.component';
 import { TaskFavComponent } from './task-reusable-component/task-fav/task-fav.component';
 import { TaskCircleProgressComponentComponent } from './task-reusable-component/task-circle-progress-component/task-circle-progress-component.component';
+import { TaskDashboardDetailsProjectPhaseComponent } from './task-dashboard-details-project-phase/task-dashboard-details-project-phase.component';
+import { TaskDashboardDetailsProjectTaskComponent } from './task-dashboard-details-project-task/task-dashboard-details-project-task.component';
 
 export const firebaseConfig = {
   apiKey: "AIzaSyBV8gdT47Bqa-7e4tVejOcJLVal1wtsYF0",
@@ -51,7 +53,9 @@ export const firebaseConfig = {
     BackendErrorComponent,
     TaskDashboardDetailProjectComponent,
     TaskFavComponent,
-    TaskCircleProgressComponentComponent
+    TaskCircleProgressComponentComponent,
+    TaskDashboardDetailsProjectPhaseComponent,
+    TaskDashboardDetailsProjectTaskComponent
   ],
   imports: [
     BrowserModule,

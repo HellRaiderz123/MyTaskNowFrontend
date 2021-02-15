@@ -1,0 +1,12 @@
+<div class="project-container row">
+    <div *ngFor = 'let project of projectDetailList' class="col">
+        <div class="card" style="max-width: 18rem;">
+            <div class="card-header text-white">{{project.task}}</div>
+            <div *ngFor = "let subTask of project['sub-task']" class="card-body border-bottom border-dark">
+              <h5 class="card-title">{{subTask.name}}</h5>
+              <p class="card-text">{{subTask.detail}}</p>
+              <p class="card-text">{{subTask.collaborators}}</p>
+            </div>
+        </div>
+    </div>
+</div>

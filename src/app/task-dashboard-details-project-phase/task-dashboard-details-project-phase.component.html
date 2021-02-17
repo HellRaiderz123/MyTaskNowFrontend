@@ -1,7 +1,7 @@
 <div class="container">
     <div class="row align-items-center text-left">
         <div class="col col-mb-2">
-            <h1>EUGBC Part B - Gemini Projects</h1>
+            <h1>{{project}}</h1>
             <p>This project is all about something that matters goies here.</p>
         </div>
         <div class="col  col-mb-2 text-right">
@@ -60,25 +60,25 @@
     </div>
     <div class="row align-items-center btn-group">
         <div class="col col-mb-2">
-            <button [ngClass]="activeProjectPhase=='POC' ? activeClass+' active' : notActiveClass">POC</button>
+            <button [ngClass]="activeProjectPhase=='POC' ? activeClass+' active' : notActiveClass" (click)="fnChangePhase('POC')">POC</button>
         </div>
         <div class="col col-mb-2">
-            <button [ngClass]="activeProjectPhase=='A&D' ? activeClass+' active' : notActiveClass">A&D</button>
+            <button [ngClass]="activeProjectPhase=='A&D' ? activeClass+' active' : notActiveClass" (click)="fnChangePhase('A&D')">A&D</button>
         </div>
         <div class="col col-mb-2">
-            <button [ngClass]="activeProjectPhase=='CUT' ? activeClass : notActiveClass">CUT</button>
+            <button [ngClass]="activeProjectPhase=='CUT' ? activeClass : notActiveClass" (click)="fnChangePhase('CUT')">CUT</button>
         </div>
         <div class="col col-mb-2">
-            <button [ngClass]="activeProjectPhase=='ST' ? activeClass : notActiveClass">ST</button>
+            <button [ngClass]="activeProjectPhase=='ST' ? activeClass : notActiveClass" (click)="fnChangePhase('ST')">ST</button>
         </div>
         <div class="col col-mb-2">
-            <button [ngClass]="activeProjectPhase=='UAT' ? activeClass : notActiveClass">UAT</button>
+            <button [ngClass]="activeProjectPhase=='UAT' ? activeClass : notActiveClass" (click)="fnChangePhase('UAT')">UAT</button>
         </div>
         <div class="col col-mb-2">
-            <button [ngClass]="activeProjectPhase=='PIS' ? activeClass : notActiveClass">PIS</button>
+            <button [ngClass]="activeProjectPhase=='PIS' ? activeClass : notActiveClass" (click)="fnChangePhase('PIS')">PIS</button>
         </div>
         <div class="col col-mb-2">
-            <button [ngClass]="activeProjectPhase=='LIVE' ? activeClass : notActiveClass">LIVE</button>
+            <button [ngClass]="activeProjectPhase=='LIVE' ? activeClass : notActiveClass" (click)="fnChangePhase('LIVE')">LIVE</button>
         </div>
     </div>
 </div>

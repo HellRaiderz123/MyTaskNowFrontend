@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-task-dashboard-details-project-phase',
@@ -7,6 +7,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TaskDashboardDetailsProjectPhaseComponent implements OnInit {
 
+  @Input() project: string;
+  @Output() change = new EventEmitter();
+
   activeProjectPhase: string = 'A&D';
   activeClass: string="btn btn-outline-primary rounded-circle";
   notActiveClass: string="btn btn-outline-secondary rounded-circle";
@@ -14,6 +17,10 @@ export class TaskDashboardDetailsProjectPhaseComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  fnChangePhase(value: string) {
+    this.change.emit(value);
   }
 
 }

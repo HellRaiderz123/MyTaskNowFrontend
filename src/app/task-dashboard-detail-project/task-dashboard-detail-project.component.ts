@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-task-dashboard-detail-project',
@@ -7,9 +8,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TaskDashboardDetailProjectComponent implements OnInit {
 
-  constructor() { }
+  phase: string = 'A&D';
+  projectName: string;
+
+  constructor(private activatedRoute: ActivatedRoute) { 
+    this.activatedRoute.queryParams.subscribe(params => {
+      this.projectName = params['projectName'];
+    });
+    console.log(this.projectName);
+  }
 
   ngOnInit(): void {
+  }
+
+  changProjectPhase(value: string) {
+    //need to change the project phase details component
+    this.phase = value;
   }
 
 }

@@ -19,7 +19,6 @@ export class TaskUserProfileComponent implements OnInit {
 
   ngOnInit(): void {
     this.user = this.taskBasicAuthService.getUserDetails();
-    console.log('in TaskUserProfileComponent ' + this.user.userName);
     this.userName = this.user.userName;
   }
 

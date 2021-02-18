@@ -1,4 +1,4 @@
 <br>
-<app-task-dashboard-details-project-phase [project] = 'projectName' (change)="changProjectPhase($event)"></app-task-dashboard-details-project-phase>
+<app-task-dashboard-details-project-phase [project] = 'projectName' [activeProjectPhase] = 'phase' (change)="changProjectPhase($event)"></app-task-dashboard-details-project-phase>
 <hr><br>
 <app-task-dashboard-details-project-task [(projectPhase)] = 'phase'></app-task-dashboard-details-project-task>

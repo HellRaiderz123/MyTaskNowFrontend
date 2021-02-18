@@ -10,7 +10,7 @@ export class TaskDashboardDetailsProjectPhaseComponent implements OnInit {
   @Input() project: string;
   @Output() change = new EventEmitter();
 
-  activeProjectPhase: string = 'A&D';
+  @Input() activeProjectPhase: string;
   activeClass: string="btn btn-outline-primary rounded-circle";
   notActiveClass: string="btn btn-outline-secondary rounded-circle";
 

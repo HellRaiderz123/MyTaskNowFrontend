@@ -66,19 +66,19 @@
             <button [ngClass]="activeProjectPhase=='A&D' ? activeClass+' active' : notActiveClass" (click)="fnChangePhase('A&D')">A&D</button>
         </div>
         <div class="col col-mb-2">
-            <button [ngClass]="activeProjectPhase=='CUT' ? activeClass : notActiveClass" (click)="fnChangePhase('CUT')">CUT</button>
+            <button [ngClass]="activeProjectPhase=='CUT' ? activeClass+' active' : notActiveClass" (click)="fnChangePhase('CUT')">CUT</button>
         </div>
         <div class="col col-mb-2">
-            <button [ngClass]="activeProjectPhase=='ST' ? activeClass : notActiveClass" (click)="fnChangePhase('ST')">ST</button>
+            <button [ngClass]="activeProjectPhase=='ST' ? activeClass+' active' : notActiveClass" (click)="fnChangePhase('ST')">ST</button>
         </div>
         <div class="col col-mb-2">
-            <button [ngClass]="activeProjectPhase=='UAT' ? activeClass : notActiveClass" (click)="fnChangePhase('UAT')">UAT</button>
+            <button [ngClass]="activeProjectPhase=='UAT' ? activeClass+' active' : notActiveClass" (click)="fnChangePhase('UAT')">UAT</button>
         </div>
         <div class="col col-mb-2">
-            <button [ngClass]="activeProjectPhase=='PIS' ? activeClass : notActiveClass" (click)="fnChangePhase('PIS')">PIS</button>
+            <button [ngClass]="activeProjectPhase=='PIS' ? activeClass+' active' : notActiveClass" (click)="fnChangePhase('PIS')">PIS</button>
         </div>
         <div class="col col-mb-2">
-            <button [ngClass]="activeProjectPhase=='LIVE' ? activeClass : notActiveClass" (click)="fnChangePhase('LIVE')">LIVE</button>
+            <button [ngClass]="activeProjectPhase=='LIVE' ? activeClass+' active' : notActiveClass" (click)="fnChangePhase('LIVE')">LIVE</button>
         </div>
     </div>
 </div>

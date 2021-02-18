@@ -3,16 +3,17 @@
         <div class="col" style="width: 100%;">
             <div class="card">
                 <div class="card-header" data-toggle="" data-target="#demo">
-                    {{project.projectName}} - Something Extra as well &nbsp;<app-task-fav isFav={{project.projectFav}}></app-task-fav>
+                    <strong>{{project.projectName}}</strong>
+                    <app-task-fav style="right: 0px; position: absolute;" isFav={{project.projectFav}}></app-task-fav>
                     <div class="progress">
                         <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
                     </div>
                 </div>
                 <div class="card-body" id="demo" class="">
-                    <h4 class="card-title">This Projec is about something that will come here!!</h4>
-                    <h5>Start Date : {{project.projectStartDate | date}}</h5>
-                    <h5>End Date : {{project.projectEndDate | date}}</h5>
-                    <a [routerLink]="['detail-project']" [queryParams]="{projectName: project.projectName}" class="btn btn-primary btn-sm">View Details</a>
+                    <h4 class="card-title">{{project.projectDescription}}</h4>
+                    <h5><strong>Start Date : </strong>{{project.projectStartTime}}</h5>
+                    <h5><strong>End Date : </strong>{{project.projectEndTime}}</h5>
+                    <a [routerLink]="['detail-project']" [queryParams]="{projectName: project.projectName, currPhase: project.projectStatus}" class="btn btn-primary btn-sm">View Details</a>
                 </div>
             </div>
         </div>

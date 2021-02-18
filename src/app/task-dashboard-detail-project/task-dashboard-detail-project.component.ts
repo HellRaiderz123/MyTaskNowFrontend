@@ -8,14 +8,14 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class TaskDashboardDetailProjectComponent implements OnInit {
 
-  phase: string = 'A&D';
+  phase: string;
   projectName: string;
 
   constructor(private activatedRoute: ActivatedRoute) { 
     this.activatedRoute.queryParams.subscribe(params => {
       this.projectName = params['projectName'];
+      this.phase = params['currPhase'];
     });
-    console.log(this.projectName);
   }
 
   ngOnInit(): void {

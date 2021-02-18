@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import  { Project} from '../services/projectService/project.model';
+import { TaskProjectService } from '../services/projectService/task-project.service';
 
 @Component({
   selector: 'app-task-dash-projects',
@@ -9,17 +10,18 @@ import  { Project} from '../services/projectService/project.model';
 })
 export class TaskDashProjectsComponent implements OnInit {
 
-  Projects: Array<Project> = [
-    new Project('1','FIRST-PROJECT',new Date(), new Date(),['Tarun','Ram'],false),
-    new Project('2','SECOND-PROJECT',new Date(), new Date(),['Tarun','Ram'],true),
-    new Project('3','THIRD-PROJECT',new Date(), new Date(),['Tarun','Ram'],true),
-    new Project('4','FOURTH-PROJECT',new Date(), new Date(),['Tarun','Ram'],false),
-    new Project('5','FIFTH-PROJECT',new Date(), new Date(),['Tarun','Ram'],false),
-    new Project('6','SIXTH-PROJECT',new Date(), new Date(),['Tarun','Ram'],false)];
+  Projects: Array<Project> = [];
 
-  constructor() { }
+  constructor(private taskService: TaskProjectService) { 
+  }
 
   ngOnInit(): void {
+    this.taskService.getAllProjects().subscribe(
+      data => {
+        this.Projects = data;
+        console.log(this.Projects);
+      }
+    );
   }
 
 }

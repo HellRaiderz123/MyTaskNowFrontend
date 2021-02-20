@@ -1,20 +1,18 @@
-<div class="container" style="left: 0px; right: 0px; padding: 20px;">
-    <div class="row" style="padding: 20px;max-width: 450px;" *ngFor='let project of Projects'>
-        <div class="col" style="width: 100%;">
-            <div class="card">
-                <div class="card-header" data-toggle="" data-target="#demo">
-                    <strong>{{project.projectName}}</strong>
-                    <app-task-fav style="right: 0px; position: absolute;" isFav={{project.projectFav}}></app-task-fav>
-                    <div class="progress">
-                        <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
-                    </div>
+<div class="row" style="padding: 20px;" *ngFor='let project of Projects'>
+    <div class="col">
+        <div class="card">
+            <div class="card-header">
+                <strong>{{project.projectName}}</strong>
+                <app-task-fav style="right: 0px; position: absolute;" isFav={{project.projectFav}}></app-task-fav>
+                <div class="progress">
+                    <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
                 </div>
-                <div class="card-body" id="demo" class="">
-                    <h4 class="card-title">{{project.projectDescription}}</h4>
-                    <h5><strong>Start Date : </strong>{{project.projectStartTime}}</h5>
-                    <h5><strong>End Date : </strong>{{project.projectEndTime}}</h5>
-                    <a [routerLink]="['detail-project']" [queryParams]="{projectName: project.projectName, currPhase: project.projectStatus}" class="btn btn-primary btn-sm">View Details</a>
-                </div>
+            </div>
+            <div class="card-body">
+                <h4 class="card-title">{{project.projectDescription}}</h4>
+                <h5 class="card-text"><strong>Start Date : </strong>{{project.projectStartTime}}</h5>
+                <h5 class="card-text"><strong>End Date : </strong>{{project.projectEndTime}}</h5>
+                <a [routerLink]="['detail-project']" [queryParams]="{projectName: project.projectName, currPhase: project.projectStatus}" class="btn btn-primary btn-sm">View Details</a>
             </div>
         </div>
     </div>

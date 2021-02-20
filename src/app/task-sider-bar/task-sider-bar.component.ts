@@ -19,7 +19,6 @@ export class TaskSiderBarComponent implements OnInit {
   constructor(private route: Router,
     private taskService: TaskBasicAuthService) {
     this.users = taskService.getUserDetails();
-    console.log(this.users);
   }
 
   ngOnInit(): void {

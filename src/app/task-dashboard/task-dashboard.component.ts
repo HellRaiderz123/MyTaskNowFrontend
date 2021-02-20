@@ -12,17 +12,14 @@ export class TaskDashboardComponent implements OnInit {
 
   user: UserDet;
   userName: string;
+  sideBarList: Array<String> = ['List View', 'Kanban View'];
 
   constructor(private taskBasicAuthService : TaskBasicAuthService) { 
   }
 
   ngOnInit(): void {
     this.user = this.taskBasicAuthService.getUserDetails();
-    console.log('in TaskDashProfileCompNgOnInit ' + this.user.userName);
     this.userName = this.user.userName;
   }
-
-  sideBarList: Array<String> = ['List View', 'Detail View'];
   
-
 }

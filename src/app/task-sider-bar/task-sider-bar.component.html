@@ -1,12 +1,28 @@
-<nav id="sidebar">
-    <div class="sidebar-header">
-        <span class="text-center">
-            <h3><img src="https://s3.eu-central-1.amazonaws.com/bootstrapbaymisc/blog/24_days_bootstrap/fox.jpg"
-                    width="70" height="70" class="rounded-circle"> {{userName}}</h3>
-        </span>
-        <h5>Hi!! This is testing and testing is what it is.</h5>
-    </div>
-    <ul class="list-unstyled components" >
-        <li *ngFor='let list of sideBarList'><a class="btn" (click)='gotoRespectiveModule(list)'>{{list}}</a></li>
-    </ul>
-</nav>
+<div class="wrapper">
+
+    <nav id="sidebar">
+        <!-- Sidebar Header -->
+        <div class="sidebar-header">
+            <span class="text-left">
+                <h3><img src="https://s3.eu-central-1.amazonaws.com/bootstrapbaymisc/blog/24_days_bootstrap/fox.jpg"
+                        width="70" height="70" class="rounded-circle"> {{userName}}</h3>
+            </span>
+            <h5>Hi!! This is testing and testing is what it is.</h5>
+        </div>
+
+        <!-- Sidebar Links -->
+        <ul class="list-unstyled components">
+            <li *ngFor='let list of sideBarList'><a class='btn text-left'
+                    (click)='gotoRespectiveModule(list)'>{{list}}</a></li>
+        </ul>
+    </nav>
+
+    <div id="content">
+        <button type="button" id="sidebarCollapse" class="navbar-btn">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <div>
+
+        </div>

@@ -26,22 +26,13 @@ export class TaskBasicAuthService {
     private taskUsersService: TaskUsersService
     ) { 
       //Need to update user class if its already logged
-      // if(this.isLoggedIn){
-      //     if(localStorage.getItem('userDet')!=null && localStorage.getItem('userDet')!='null'){
-      //       this.users = JSON.parse(localStorage.getItem('userDet'));
-      //     } else {
-      //       (await this.taskUsersService.getUserDataByID(JSON.parse(JSON.stringify(localStorage.getItem('user'))).uid)).subscribe(
-      //         data => {
-      //             this.users = data;
-      //             localStorage.setItem('userDet',JSON.stringify(data));
-      //         },
-      //         error=> {
-      //           console.log(error);
-      //           this.router.navigate(['error']);
-      //         });
-              
-      //     }
-      // }
+      if(this.isLoggedIn){
+          if(localStorage.getItem('userDet')!=null && localStorage.getItem('userDet')!='null'){
+            this.users = JSON.parse(localStorage.getItem('userDet'));
+          } else {
+            this.taskUsersService.getUserDataByID(JSON.parse(JSON.stringify(localStorage.getItem('user'))).uid);
+          }
+      }
     }
 
    basicAuthService(username:string, password: string): boolean {

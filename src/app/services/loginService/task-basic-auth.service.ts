@@ -26,25 +26,25 @@ export class TaskBasicAuthService {
     private taskUsersService: TaskUsersService
     ) { 
       //Need to update user class if its already logged
-      if(this.isLoggedIn){
-          if(localStorage.getItem('userDet')!=null && localStorage.getItem('userDet')!='null'){
-            this.users = JSON.parse(localStorage.getItem('userDet'));
-          } else {
-            this.taskUsersService.getUserDataByID(JSON.parse(JSON.stringify(localStorage.getItem('user'))).uid).subscribe(
-              data => {
-                  this.users = data;
-                  localStorage.setItem('userDet',JSON.stringify(data));
-              },
-              error=> {
-                console.log(error);
-                this.router.navigate(['error']);
-              });
+      // if(this.isLoggedIn){
+      //     if(localStorage.getItem('userDet')!=null && localStorage.getItem('userDet')!='null'){
+      //       this.users = JSON.parse(localStorage.getItem('userDet'));
+      //     } else {
+      //       (await this.taskUsersService.getUserDataByID(JSON.parse(JSON.stringify(localStorage.getItem('user'))).uid)).subscribe(
+      //         data => {
+      //             this.users = data;
+      //             localStorage.setItem('userDet',JSON.stringify(data));
+      //         },
+      //         error=> {
+      //           console.log(error);
+      //           this.router.navigate(['error']);
+      //         });
               
-          }
-      }
+      //     }
+      // }
     }
 
-  basicAuthService(username:string, password: string): boolean {
+   basicAuthService(username:string, password: string): boolean {
     if(username=='admin@xyz.com' && password =='root123') 
       return true;
     else
@@ -53,34 +53,26 @@ export class TaskBasicAuthService {
 
 
   async login(email: string, password: string){
-    var result = await this.afAuth.auth.signInWithEmailAndPassword(email, password);
-    this.afAuth.authState.subscribe(user => {
-      if (user){
-        // this.user = user;
-        localStorage.setItem('user', JSON.stringify(user));
-        //Need to get User Det with User iD and set to localStorage
-        console.log(JSON.parse(JSON.stringify(user)).uid)
-        this.taskUsersService.getUserDataByID(JSON.parse(JSON.stringify(user)).uid).subscribe(
-          data => {
-              this.users = data;
-              this.router.navigate(['dashboard']);
-              localStorage.setItem('userDet',JSON.stringify(data));
-          },
-          error=> {
-            console.log(error);
-            this.router.navigate(['error']);
-          }
-        );
-      } else {
-        localStorage.setItem('user', null);
-      }
-    })
+    await this.afAuth.auth.signInWithEmailAndPassword(email, password);
+    return new Promise ( resolve => {
+      this.afAuth.authState.subscribe(async user => {
+        if (user){
+          // this.user = user;
+          localStorage.setItem('user', JSON.stringify(user));
+          //Need to get User Det with User iD and set to localStorage
+          await this.taskUsersService.getUserDataByID(JSON.parse(JSON.stringify(user)).uid);
+        }
+        else {
+          localStorage.setItem('user', null);
+        }
+        })
+      });
   }
 
   async register(email: string, password: string, fullName: string) {
      var result = await this.afAuth.auth.createUserWithEmailAndPassword(email, password);
      this.sendEmailVerification();
-     this.afAuth.authState.subscribe(user => {
+     this.afAuth.authState.subscribe(async user => {
       if (user){
         localStorage.setItem('user', null);
         //this.user = user;
@@ -90,7 +82,7 @@ export class TaskBasicAuthService {
         this.users.setUserEmail(this.authUser.email);
         this.users.setUserName(fullName);
         //calling end point
-        this.taskUsersService.postUserDataOnReg(this.users).subscribe();
+        (await this.taskUsersService.postUserDataOnReg(this.users)).subscribe();
       } else {
         localStorage.setItem('user', null);
       }

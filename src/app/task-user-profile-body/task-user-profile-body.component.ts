@@ -23,11 +23,11 @@ export class TaskUserProfileBodyComponent implements OnInit {
   }
 
   //calling user service
-  saveUserDet() {
+  async saveUserDet() {
     this.user.setUserDetails(this.userDet);
     this.user.setUserName(this.userFullName);
     // console.log(this.user);
-    this.taskUsersService.postUserDataOnPersonDataProfileEdit(this.user).subscribe();
+    (await this.taskUsersService.postUserDataOnPersonDataProfileEdit(this.user)).subscribe();
   }
 
 }

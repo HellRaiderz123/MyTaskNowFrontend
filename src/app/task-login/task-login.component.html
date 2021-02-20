@@ -1,44 +1,56 @@
 <br>
 <div class="container-fluid">
-    <div class="row d-flex justify-content-center">
-        <div class="col-md-3">
-            <div class="">
-                <h2 class="text-info font-weight-light mb-5">MyTaskNow</h2>
-                <form>
-                    <div *ngIf='isLoginAttempted || firstTimeSungUpAttempt' class="form-group"><label
-                            class="text-secondary">Full Name</label><input [(ngModel)]='fullName' class="form-control"
-                            name='text' type="text" required (focus)='onFocusOfInput()' />
-                    </div>
-                    <div class="form-group">
-                        <label class="text-secondary">Username or email address</label><input [(ngModel)]='username'
-                            class="form-control" name='email' type="text" required
-                            pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,15}$" inputmode="email"
-                            (focus)='onFocusOfInput()' /></div>
-                    <div class="form-group"><label class="text-secondary">Password</label><input [(ngModel)]='password'
-                            class="form-control" name='password' type="password" required (focus)='onFocusOfInput()' />
-                    </div>
-                    <p class="alert alert-danger" *ngIf='invalidCred'>{{errorMessage}}</p>
-                    <button class="btn btn-info mt-2" type="submit" (click)='firebaseLoginHandler()'
-                        [disabled]='firstTimeSungUpAttempt'>Log
-                        In</button>&nbsp;
-                    <button class="btn btn-success mt-2" (click)='firebaseRegHandler()'
-                        [disabled]='!firstTimeSungUpAttempt'>Sign Up</button>
-                </form>
-                <p class="mt-3 mb-0"><button class="btn text-info btn-sm underline_me"
-                        (click)='this.taskBasicAuthService.sendPasswordResetEmail(username)'>Forgot your email or
-                        password?</button><br><button class="btn text-info btn-sm underline_me" (click)='firstTimeSugnUp()'>New User?
-                        Click on here to Continue.</button></p>
-                <hr>
-                <button class="btn btn-outline-dark" (click)='this.taskBasicAuthService.loginWithGoogle()'><i
-                        class="fab fa-google"></i></button>&nbsp;&nbsp;
-                <button class="btn btn-outline-dark" (click)='this.taskBasicAuthService.loginWithGoogle()'><i
-                        class="fab fa-facebook"></i></button>&nbsp;&nbsp;
-                <button class="btn btn-outline-dark" (click)='this.taskBasicAuthService.loginWithGoogle()'><i
-                        class="fab fa-twitter"></i></button>&nbsp;&nbsp;
-                <button class="btn btn-outline-dark" (click)='this.taskBasicAuthService.loginWithGoogle()'><i
-                        class="fab fa-github"></i></button>
-            </div>
+        <div class="row d-flex justify-content-center">
+                <div class="col-md-3">
+                        <div class="">
+                                <h2 class="text-info font-weight-light mb-5">MyTaskNow</h2>
+                                <form>
+                                        <div *ngIf='isLoginAttempted || firstTimeSungUpAttempt' class="form-group">
+                                                <label class="text-secondary">Full Name</label><input
+                                                        [(ngModel)]='fullName' class="form-control" name='text'
+                                                        type="text" required (focus)='onFocusOfInput()' />
+                                        </div>
+                                        <div class="form-group">
+                                                <label class="text-secondary">Username or email address</label><input
+                                                        [(ngModel)]='username' class="form-control" name='email'
+                                                        type="text" required
+                                                        pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,15}$"
+                                                        inputmode="email" (focus)='onFocusOfInput()' />
+                                        </div>
+                                        <div class="form-group"><label class="text-secondary">Password</label><input
+                                                        [(ngModel)]='password' class="form-control" name='password'
+                                                        type="password" required (focus)='onFocusOfInput()' />
+                                        </div>
+                                        <p class="alert alert-danger" *ngIf='invalidCred'>{{errorMessage}}</p>
+                                        <button class="btn btn-info mt-2" id="login-btn" type="submit" (click)='firebaseLoginHandler()'
+                                                [disabled]='firstTimeSungUpAttempt' [attr.disabled]="disabled?'':null">
+                                                
+                                                Log In
+                                        </button>&nbsp;
+                                        <button class="btn btn-success mt-2" (click)='firebaseRegHandler()'
+                                                [disabled]='!firstTimeSungUpAttempt'>Sign Up</button>
+                                </form>
+                                <p class="mt-3 mb-0"><button class="btn text-info btn-sm underline_me"
+                                                (click)='this.taskBasicAuthService.sendPasswordResetEmail(username)'>Forgot
+                                                your email or
+                                                password?</button><br><button class="btn text-info btn-sm underline_me"
+                                                (click)='firstTimeSugnUp()'>New User?
+                                                Click on here to Continue.</button></p>
+                                <hr>
+                                <button class="btn btn-outline-dark"
+                                        (click)='this.taskBasicAuthService.loginWithGoogle()'><i
+                                                class="fab fa-google"></i></button>&nbsp;&nbsp;
+                                <button class="btn btn-outline-dark"
+                                        (click)='this.taskBasicAuthService.loginWithGoogle()'><i
+                                                class="fab fa-facebook"></i></button>&nbsp;&nbsp;
+                                <button class="btn btn-outline-dark"
+                                        (click)='this.taskBasicAuthService.loginWithGoogle()'><i
+                                                class="fab fa-twitter"></i></button>&nbsp;&nbsp;
+                                <button class="btn btn-outline-dark"
+                                        (click)='this.taskBasicAuthService.loginWithGoogle()'><i
+                                                class="fab fa-github"></i></button>
+                        </div>
+                </div>
+                <!-- <app-task-circle-progress-component showSpinner=true}></app-task-circle-progress-component> -->
         </div>
-        <!-- <app-task-circle-progress-component showSpinner=true}></app-task-circle-progress-component> -->
-    </div>
 </div>

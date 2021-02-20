@@ -17,31 +17,39 @@ export class TaskLoginComponent implements OnInit {
   invalidCred: boolean;
   isLoginAttempted: boolean = false;
   firstTimeSungUpAttempt: boolean = false;
-  spiner:boolean;
+  loadingSpan: any;
+  disabled: boolean;
 
-  constructor(public taskBasicAuthService: TaskBasicAuthService,private router: Router) { }
+  constructor(public taskBasicAuthService: TaskBasicAuthService,private router: Router) { 
+    this.loadingSpan = document.createElement('span');
+    this.loadingSpan.className = 'spinner-border spinner-border-sm';
+    this.loadingSpan.setAttribute('role','status');
+    this.loadingSpan.setAttribute('id','spinner');
+    this.loadingSpan.setAttribute('aria-hidden','true');
+  }
 
   ngOnInit(): void {
   }
 
   async firebaseLoginHandler() {
-  //  Promise.all([this.taskBasicAuthService.login(this.username, this.password)]).then(
-  //   (values) => {
-  //      this.invalidCred = false;
-  //     this.router.navigate(['dashboard']);
-  //   }
-  //  ).catch((error) => {
-  //   // alert(error.message);
-  //   this.invalidCred = true;
-  //  })
 
-  this.spiner = true;
-  await this.taskBasicAuthService.login(this.username, this.password).catch(
+  document.getElementById('login-btn').appendChild(this.loadingSpan);
+  this.disabled = true
+  await this.taskBasicAuthService.login(this.username, this.password)
+  .then(
+    (data) => {
+      let spin = document.getElementById('spinner');
+      document.getElementById('login-btn').removeChild(spin);
+    }
+
+  )
+  .catch(
     (error) => {
       this.invalidCred = true;
       this.errorMessage = error;
       this.isLoginAttempted = true;
-      this.spiner = false;
+      let spin = document.getElementById('spinner');
+      document.getElementById('login-btn').removeChild(spin);
   });
   
   }

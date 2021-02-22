@@ -6,5 +6,6 @@ RUN npm install
 COPY . /app
 RUN npm run build --prod
 FROM nginx:1.19.1-alpine
+COPY nginx.conf /etc/nginx/nginx.conf
 COPY --from=build-step /app/dist/MyTaskNowFrontend /usr/share/nginx/html
 RUN cd /usr/share/nginx/html

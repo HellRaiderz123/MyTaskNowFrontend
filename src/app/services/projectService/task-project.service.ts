@@ -10,6 +10,6 @@ export class TaskProjectService {
   constructor(private http: HttpClient) { }
 
   getAllProjects() {
-    return this.http.get<Array<Project>>('http://localhost:8080/api/v1/projects');
+    return this.http.get<Array<Project>>('http://mytasknowbackend.azurewebsites.net:8080/api/v1/projects');
   }
 }

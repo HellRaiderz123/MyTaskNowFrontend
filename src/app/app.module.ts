@@ -26,15 +26,13 @@ import { TaskCircleProgressComponentComponent } from './task-reusable-component/
 import { TaskDashboardDetailsProjectPhaseComponent } from './task-dashboard-details-project-phase/task-dashboard-details-project-phase.component';
 import { TaskDashboardDetailsProjectTaskComponent } from './task-dashboard-details-project-task/task-dashboard-details-project-task.component';
 
-export const firebaseConfig = {
-  apiKey: "AIzaSyBV8gdT47Bqa-7e4tVejOcJLVal1wtsYF0",
-  authDomain: "mytasknow-co.firebaseapp.com",
-  databaseURL: "https://mytasknow-co.firebaseio.com",
-  projectId: "mytasknow-co",
-  storageBucket: "mytasknow-co.appspot.com",
-  messagingSenderId: "755812530679",
-  appId: "1:755812530679:web:7555d1250009a07746d6f2",
-  measurementId: "G-SXPS1NGXCL"
+const firebaseConfig = {
+  apiKey: "AIzaSyD0dazNOvb6bMqSNn2Qz0B7cUdtxPRGGbg",
+  authDomain: "mytasknowco-9d4d5.firebaseapp.com",
+  projectId: "mytasknowco-9d4d5",
+  storageBucket: "mytasknowco-9d4d5.appspot.com",
+  messagingSenderId: "12894406298",
+  appId: "1:12894406298:web:09eaa89676904767158123"
 };
 
 @NgModule({

@@ -47,7 +47,7 @@ export class TaskLoginComponent implements OnInit {
     (error) => {
       this.invalidCred = true;
       this.errorMessage = error;
-      this.isLoginAttempted = true;
+      this.isLoginAttempted = false;
       let spin = document.getElementById('spinner');
       document.getElementById('login-btn').removeChild(spin);
   });

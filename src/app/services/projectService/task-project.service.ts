@@ -10,6 +10,6 @@ export class TaskProjectService {
   constructor(private http: HttpClient) { }
 
   getAllProjects() {
-    return this.http.get<Array<Project>>('https://mytasknow-co.herokuapp.com/api/v1/projects');
+    return this.http.get<Array<Project>>('https://mytasknow-co.herokuapp.com/api/v1/projects/');
   }
 }

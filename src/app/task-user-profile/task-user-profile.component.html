@@ -1,4 +1,4 @@
 <div class="wrapper">
-    <app-task-sider-bar  [sideBarList]='sideBarList' [userName] = 'userName' [sideBarType]='sideBarType'></app-task-sider-bar>
+    <app-task-sider-bar  [sideBarList]='sideBarList' [userName] = 'user.userName' [sideBarType]='sideBarType' [userDet]="user.userDetails"></app-task-sider-bar>
     <router-outlet name="personaProfile"></router-outlet>
 </div>

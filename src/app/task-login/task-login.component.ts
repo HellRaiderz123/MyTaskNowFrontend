@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TaskBasicAuthService } from '../services/loginService/task-basic-auth.service';
 import { Router } from '@angular/router';
-import { TaskRouteGuardService } from '../services/guard/task-route-guard.service';
 
 @Component({
   selector: 'app-task-login',

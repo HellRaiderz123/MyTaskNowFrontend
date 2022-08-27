@@ -23,7 +23,7 @@
                                         </div>
                                         <p class="alert alert-danger" *ngIf='invalidCred'>{{errorMessage}}</p>
                                         <button class="btn btn-info mt-2" id="login-btn" type="submit" (click)='firebaseLoginHandler()'
-                                                [disabled]='firstTimeSungUpAttempt' [attr.disabled]="disabled?'':null">
+                                                [disabled]='firstTimeSungUpAttempt'>
                                                 
                                                 Log In
                                         </button>&nbsp;

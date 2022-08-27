@@ -26,4 +26,6 @@
     </form>
     <br>
 <div class="alert alert-warning" *ngIf="todoForm.invalid">Please enter valid values</div><br>
+<div class="alert alert-error" *ngIf="isError">Error while Saving the Details. Please try again !</div>
+<div class="alert alert-error" *ngIf="isSaved">Data saved successfully !!</div>
 </div>

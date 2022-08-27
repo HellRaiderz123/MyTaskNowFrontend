@@ -69,9 +69,9 @@ export class TaskBasicAuthService {
         //this.user = user;
         //User - add details Api call
         this.authUser = JSON.parse(JSON.stringify(user));
-        this.users.setUserId(this.authUser.uid);
-        this.users.setUserEmail(this.authUser.email);
-        this.users.setUserName(fullName);
+        this.users.userId = (this.authUser.uid);
+        this.users.userEmail = (this.authUser.email);
+        this.users.userName = (fullName);
         //calling end point
         (await this.taskUsersService.postUserDataOnReg(this.users)).subscribe();
       } else {

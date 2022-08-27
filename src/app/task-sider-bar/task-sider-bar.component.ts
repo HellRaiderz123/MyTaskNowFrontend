@@ -13,12 +13,10 @@ export class TaskSiderBarComponent implements OnInit {
   @Input() sideBarList: Array<String>;
   @Input() userName: string;
   @Input() sideBarType: string;
-
-  users = new UserDet;
+  @Input() userDet: string;
   
   constructor(private route: Router,
     private taskService: TaskBasicAuthService) {
-    this.users = taskService.getUserDetails();
   }
 
   ngOnInit(): void {

@@ -3,7 +3,6 @@ import { UserDet } from '../loginService/user.model';
 
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
-import { User } from 'firebase';
 
 @Injectable({
   providedIn: 'root'
@@ -18,7 +17,7 @@ export class TaskUsersService {
   ) { }
 
   async postUserDataOnReg(user: UserDet) {
-    return this.http.post('http://https://mytasknow-co.herokuapp.com/api/v1/users/',user);
+    return this.http.post('https://https://mytasknow-co.herokuapp.com/api/v1/users/',user);
   }
 
   async postUserDataOnPersonDataProfileEdit(user: UserDet) {
@@ -27,7 +26,7 @@ export class TaskUsersService {
   }
 
   async getUserDataByID(userId: string) {
-    this.http.get<UserDet>('http://mytasknow-co.herokuapp.com/api/v1/users/'+userId).subscribe(data => {
+    this.http.get<UserDet>('https://mytasknow-co.herokuapp.com/api/v1/users/'+userId).subscribe(data => {
         this.users = data;
         localStorage.setItem('userDet',JSON.stringify(data));
         this.router.navigate(['dashboard']);
@@ -39,6 +38,6 @@ export class TaskUsersService {
   }
 
   getUserDataByIDDet(userId: string) {
-    return this.http.get<UserDet>('http://mytasknow-co.herokuapp.com/api/v1/users/'+userId);
+    return this.http.get<UserDet>('https://mytasknow-co.herokuapp.com/api/v1/users/'+userId);
   }
 }
